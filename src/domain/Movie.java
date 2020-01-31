@@ -6,8 +6,8 @@ public class Movie implements java.io.Serializable {
 
     int movId;
     String movName;
-    Date movDate;
     int movRate;
+    Date movDate;
     int dirId;
 
     public Movie() {

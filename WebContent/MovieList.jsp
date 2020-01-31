@@ -5,7 +5,7 @@
 <%@page import="domain.MovieService"%>
 <% ArrayList<Movie> movies = new MovieService().getMovies(); %>
 <html>
-    <head><title>Movie List</title></head>
+	<%@ include file="common/header.jsp" %>  
     <body>
         <p><b>Movie List</b></p>
             <%
@@ -35,4 +35,5 @@
 %>
    <a href="NewMovie.jsp">Create a new movie data</a>
     </body>
+	<%@ include file="common/footer.jsp" %>  
 </html>
