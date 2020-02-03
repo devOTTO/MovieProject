@@ -6,7 +6,8 @@
 <html>
    <%@ include file="common/header.jsp" %> 
     <body>
-        <h2 class="col-md-4">Create Movie Form</h2>
+    	<%@ include file="common/title.jsp" %>  
+        <h2 class="col-md-6">Create Movie Form</h2>
         <%if ((status != null) && !status.isSuccessful()) {%>
         <font color="red">There were problems processing your request:
         <ul><%Iterator errors = status.getExceptions();

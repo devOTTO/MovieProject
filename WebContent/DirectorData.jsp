@@ -29,6 +29,7 @@ ArrayList<Movie> movies = new MovieService().getMoviesByDirId(dirId);
 <html>
 	<%@ include file="common/header.jsp" %> 
     <body>
+    	<%@ include file="common/title.jsp" %>  
     <div class="col-md-4">
     <table class="table table-striped table-bordered table-hover">
             <caption class="caption-top">About Director</caption>
@@ -75,7 +76,7 @@ ArrayList<Movie> movies = new MovieService().getMoviesByDirId(dirId);
      %>
  	
     <table class="table table-striped table-bordered table-hover">  
-			<caption>#<%=i+1 %> Movie</caption>
+			<caption class="caption-top">#<%=i+1 %> Movie</caption>
             <tr>
                 <td class="info">
                	Movie Title
