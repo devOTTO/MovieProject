@@ -60,7 +60,7 @@ Director director = new DirectorService().selectedDirector(movie.getDirId());
     </div>
     <div class="col-md-4">
     <table class="table table-striped table-bordered table-hover">
-            <caption>About Director</caption>
+            <caption class="caption-top">About Director</caption>
             <tr>
                 <td class="info">
                	Director Id
