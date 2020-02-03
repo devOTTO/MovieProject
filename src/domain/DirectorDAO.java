@@ -138,8 +138,51 @@ public class DirectorDAO {
             }
         }
     }
+        
+        ArrayList<Director> searchedDirectors(String dirName) throws SQLException {
+            ArrayList<Director> directors = new ArrayList<Director>();
+            Connection conn = null;
+            PreparedStatement stmt = null;
+            ResultSet rset = null;
+            try {
+                conn = connPool.getPoolConnection();
+                stmt = conn.prepareStatement(SEARCH);
+                stmt.setString(1,"%"+dirName+"%");
+                rset = stmt.executeQuery();
+                while (rset.next()) {
+                	 directors.add(new Director(rset.getInt("DIR_ID"), rset.getString("DIR_NAME"), rset.getInt("DIR_AGE")));            }
+                return directors;
+            } catch (SQLException se) {
+                throw new RuntimeException(
+                        "A database error occurred. " + se.getMessage());
+            } catch (Exception e) {
+                throw new RuntimeException("Exception: " + e.getMessage());
+            } finally {
+                if (rset != null) {
+                    try {
+                        rset.close();
+                    } catch (SQLException se) {
+                        se.printStackTrace(System.err);
+                    }
+                }
+                if (stmt != null) {
+                    try {
+                        stmt.close();
+                    } catch (SQLException se) {
+                        se.printStackTrace(System.err);
+                    }
+                }
+                if (conn != null) {
+                    try {
+                        conn.close();
+                    } catch (Exception e) {
+                        e.printStackTrace(System.err);
+                    }
+                }
+            }
+        }        
     private static final String GETID_STMT = "SELECT DIR_ID FROM DIRECTOR ORDER BY DIR_ID DESC limit 1";
     private static final String INSERT_STMT = "INSERT INTO DIRECTOR (DIR_NAME, DIR_AGE) VALUES(?, ?)";
-    private static final String RETRIEVE_ONE
-            = "SELECT * FROM DIRECTOR WHERE DIR_ID = ?";
+    private static final String RETRIEVE_ONE = "SELECT * FROM DIRECTOR WHERE DIR_ID = ?";
+    private static final String SEARCH = "SELECT * FROM DIRECTOR WHERE DIR_NAME LIKE ?";
 }

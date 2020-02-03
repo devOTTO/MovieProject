@@ -6,6 +6,7 @@
 <html>
 <%@ include file="common/header.jsp" %> 
     <body>
+    	<%@ include file="common/title.jsp" %>  
         <h2  class="col-md-4">Create Director Form</h2>
         <%if ((status != null) && !status.isSuccessful()) {%>
         <font color="red">There were problems processing your request:
