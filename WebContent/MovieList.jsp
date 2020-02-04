@@ -1,39 +1,72 @@
 ​<%@page import="java.util.ArrayList"%>
+<%@ page import="java.io.PrintWriter"%>
 <%@page import="domain.Movie"%>
 <%@page session="false" language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8" %>
 <%@page import="domain.MovieService"%>
-<% ArrayList<Movie> movies = new MovieService().getMovies(); %>
+<script type="text/javascript">
+ function keyword_check_mov(){
+
+	  if(document.searchedmovie.movieSearch.value=='' || document.searchedmovie.movieSearch.value == ' ') {
+
+	  alert('검색어를 입력하세요'); //경고창 띄움 
+	  return false; 
+	  }
+	  else return true;
+	 }
+</script>
+<% 
+
+String movieSearch = null;
+
+if (request.getParameter("movieSearch") != null) {
+
+	movieSearch = request.getParameter("movieSearch");
+
+}
+
+if (movieSearch == null) {
+	PrintWriter script = response.getWriter();
+	script.println("<script>");
+	script.println("alert('유효하지 않은 주소 입니다.')");
+	script.println("location.href = 'main.jsp'");
+	script.println("</script>");
+}
+ArrayList<Movie> movies = new MovieService().getSearchedMovies(movieSearch); 
+%>
 <html>
 	<%@ include file="common/header.jsp" %>  
     <body>
-        <p><b>Movie List</b></p>
-            <%
+    <%@ include file="common/title.jsp" %>  
+	<div class="container">
+	<div class="col-md-6 col-sm-4">
+        <h2>Movie List</h2>
+    <%@ include file="common/searchbar_movie.jsp" %>     
+        <%
                 if ((movies == null || movies.size() <= 0)) {
             %>
-        There is no movie.
+        There is no movie matching with "<b><%=movieSearch %></b>".
         <%
         } else {%>
-        <table border="2px">
+        <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th width="500">Movie Title</th>
+                <th>Director Name</th>
             </tr>
             <%
                 for (int i = 0; i < movies.size(); i++) {
                     Movie Data = movies.get(i);
             %>
             <tr>
-                <td align="center"><form action="showmoviedata" method="post"><input type="submit" value="<%=Data.getMovName()%>">
-                <input type="hidden" name="movId" value="<%=Data.getMovId()%>"></form></td>
-            </tr>
+             <td align="center"><a href="MovieData.jsp?movId=<%=Data.getMovId()%>"><%=Data.getMovName()%></a></td>
+             </tr>
             <%
                 }
             %>
         </table>
-        <%
-            }
-%>
-   <a href="NewMovie.jsp">Create a new movie data</a>
+        <%}%>
+        
+        </div>
+        </div>    
     </body>
 	<%@ include file="common/footer.jsp" %>  
 </html>

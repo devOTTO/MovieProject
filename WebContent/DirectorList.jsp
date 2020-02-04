@@ -1,11 +1,21 @@
 ​<%@page import="java.util.ArrayList"%>
 <%@ page import="java.io.PrintWriter"%>
 <%@page import="domain.Director"%>
-<%@page import="domain.Movie"%>
 <%@page session="false" language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8" %>
 <%@page import="domain.DirectorService"%>
-<%@page import="domain.MovieService"%>
+<script type="text/javascript">
+
+ function keyword_check_dir(){
+
+  if(document.searchdirector.directorSearch.value=='' || document.searchdirector.directorSearch.value == ' ' ) {
+
+  alert('검색어를 입력하세요'); //경고창 띄움 
+  return false; 
+  }
+  else return true;
+ }
+</script>
 <% 
 String directorSearch = null;
 
@@ -28,8 +38,12 @@ ArrayList<Director> directors = new DirectorService().getSearchedDirectors(direc
 	<%@ include file="common/header.jsp" %>  
     <body>
     	<%@ include file="common/title.jsp" %>  
+   	<div class="container">
+   	
+
 	<div class="col-md-6 col-sm-4">
         <h2>Director List</h2>
+        <%@ include file="common/searchbar_director.jsp" %>  
         <%
                 if ((directors == null || directors.size() <= 0)) {
             %>
@@ -54,6 +68,7 @@ ArrayList<Director> directors = new DirectorService().getSearchedDirectors(direc
         <%}%>
         
         </div>    
+        </div>
     </body>
 	<%@ include file="common/footer.jsp" %>  
 </html>

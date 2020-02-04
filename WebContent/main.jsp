@@ -12,9 +12,9 @@ ArrayList<Director> directors = new DirectorService().getDirectors();
 
 <script type="text/javascript">
 
- function keyword_check(){
+ function keyword_check_dir(){
 
-  if(document.searchdirector.directorSearch.value=='' || document.searchdirector.directorSearch.value == ' '){ //검색어가 없을 경우  
+  if(document.searchdirector.directorSearch.value=='' || document.searchdirector.directorSearch.value == ' ' ) {
 
   alert('검색어를 입력하세요'); //경고창 띄움 
   return false; 
@@ -22,6 +22,15 @@ ArrayList<Director> directors = new DirectorService().getDirectors();
   else return true;
  }
 
+ function keyword_check_mov(){
+
+	  if(document.searchedmovie.movieSearch.value=='' || document.searchedmovie.movieSearch.value == ' ') {
+
+	  alert('검색어를 입력하세요'); //경고창 띄움 
+	  return false; 
+	  }
+	  else return true;
+	 }
 </script>
 <html>
 	<%@ include file="common/header.jsp" %>  
@@ -31,6 +40,7 @@ ArrayList<Director> directors = new DirectorService().getDirectors();
     <div class="row">
   	<div class="col-md-6 col-sm-4">
         <h2>Movie List</h2>
+    <%@ include file="common/searchbar_movie.jsp" %>  
             <%
                 if ((movies == null || movies.size() <= 0)) {
             %>
