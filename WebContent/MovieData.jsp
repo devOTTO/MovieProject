@@ -29,6 +29,7 @@ Director director = new DirectorService().selectedDirector(movie.getDirId());
 <html>
 	<%@ include file="common/header.jsp" %> 
     <body>
+    	<%@ include file="common/title.jsp" %>  
     <div class="col-md-4">
     <table class="table table-striped table-bordered table-hover">
             <caption class="caption-top">About Movie</caption>

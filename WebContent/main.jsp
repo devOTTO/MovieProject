@@ -9,11 +9,38 @@
 ArrayList<Movie> movies = new MovieService().getMovies(); 
 ArrayList<Director> directors = new DirectorService().getDirectors(); 
 %>
+
+<script type="text/javascript">
+
+ function keyword_check_dir(){
+
+  if(document.searchdirector.directorSearch.value=='' || document.searchdirector.directorSearch.value == ' ' ) {
+
+  alert('검색어를 입력하세요'); //경고창 띄움 
+  return false; 
+  }
+  else return true;
+ }
+
+ function keyword_check_mov(){
+
+	  if(document.searchedmovie.movieSearch.value=='' || document.searchedmovie.movieSearch.value == ' ') {
+
+	  alert('검색어를 입력하세요'); //경고창 띄움 
+	  return false; 
+	  }
+	  else return true;
+	 }
+</script>
 <html>
 	<%@ include file="common/header.jsp" %>  
     <body>
-  	<div class="col-md-4">
+	<%@ include file="common/title.jsp" %>  
+    <div class="container">
+    <div class="row">
+  	<div class="col-md-6 col-sm-4">
         <h2>Movie List</h2>
+    <%@ include file="common/searchbar_movie.jsp" %>  
             <%
                 if ((movies == null || movies.size() <= 0)) {
             %>
@@ -37,10 +64,11 @@ ArrayList<Director> directors = new DirectorService().getDirectors();
         </table>
         <%}%>
            <a href="NewMovie.jsp" class="btn btn-info" >Add Movie</a>
-        </div>
+    </div>
         
-	<div class="col-md-4">
+	<div class="col-md-6 col-sm-4">
         <h2>Director List</h2>
+	<%@ include file="common/searchbar_director.jsp" %>  
         <%
                 if ((directors == null || directors.size() <= 0)) {
             %>
@@ -64,8 +92,10 @@ ArrayList<Director> directors = new DirectorService().getDirectors();
         </table>
         <%}%>
         <a href="NewDirector.jsp" class="btn btn-info" >Add Director</a>
-        </div>
         
+        </div>
+    </div>
+    </div>  
     </body>
 	<%@ include file="common/footer.jsp" %>  
 </html>

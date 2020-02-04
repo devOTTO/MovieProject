@@ -22,4 +22,11 @@ public class DirectorService {
         catch(Exception e) {director=null;}
         return ID;
     }
+    public ArrayList<Director> getSearchedDirectors(String dirName) {
+        ArrayList <Director> directors = null;
+        try {directors=directorDataAccess.searchedDirectors(dirName);}
+        catch(Exception e) {directors=null;}
+        return directors;
+    }
+    
 }

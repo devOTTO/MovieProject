@@ -16,6 +16,12 @@ public class MovieService {
         catch(Exception e) {movies=null;}
         return movies;
     }
+    public ArrayList<Movie> getSearchedMovies(String movName) {
+        ArrayList <Movie> movies = null;
+        try {movies=movieDataAccess.searchedMovies(movName);}
+        catch(Exception e) {movies=null;}
+        return movies;
+    }
     public Movie selectedMovie(int MovieID) {
         Movie movie = null;
         try {movie=movieDataAccess.selectedMovie(MovieID);}

@@ -56,7 +56,52 @@ public class MovieDAO {
     }
     private static final String RETRIEVE_STMT
             = "SELECT * FROM MOVIE";
-    
+    ArrayList<Movie> searchedMovies(String movName) throws SQLException {
+        ArrayList<Movie> movies = new ArrayList<Movie>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rset = null;
+        try {
+            conn = connPool.getPoolConnection();
+            stmt = conn.prepareStatement(SEARCH);
+            stmt.setString(1,"%"+movName+"%");
+            rset = stmt.executeQuery();
+            while (rset.next()) {
+                movies.add(new Movie(rset.getInt("MOV_ID"), rset.getString("MOV_NAME"), 
+                        rset.getDate("MOV_DATE"), rset.getInt("MOV_RATE"), rset.getInt("DIR_ID")));
+            }
+            return movies;
+        } catch (SQLException se) {
+            throw new RuntimeException(
+                    "A database error occurred. " + se.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException("Exception: " + e.getMessage());
+        } finally {
+            if (rset != null) {
+                try {
+                    rset.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+    }
+    private static final String SEARCH
+            = "SELECT * FROM MOVIE WHERE MOV_NAME LIKE ?";
     ArrayList<Movie> directorMovies(int dirId) throws SQLException {
         ArrayList<Movie> movies = new ArrayList<Movie>();
         Connection conn = null;
