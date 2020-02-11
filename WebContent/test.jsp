@@ -9,6 +9,7 @@
 	Class.forName("org.gjt.mm.mysql.Driver"); 
 	conn=DriverManager.getConnection(url, id, pw); 
 	out.println("success"); // mysql에 연결되면 성공!! 
+	out.println("push test");
 	}catch(Exception e){ 
 		out.println("fail"); // mysql에 연결 실패!! 
 	} 
