@@ -1,4 +1,4 @@
-package domain;
+package main.java.domain;
 
 public class Director implements java.io.Serializable  {
 	int dirId;

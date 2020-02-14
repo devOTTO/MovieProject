@@ -1,9 +1,9 @@
 ​<%@page import="java.util.ArrayList"%>
 <%@ page import="java.io.PrintWriter"%>
-<%@page import="domain.Director"%>
+<%@page import="main.java.domain.Director"%>
 <%@page session="false" language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8" %>
-<%@page import="domain.DirectorService"%>
+<%@page import="main.java.domain.DirectorService"%>
 <script type="text/javascript">
 
  function keyword_check_dir(){

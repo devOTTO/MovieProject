@@ -1,11 +1,11 @@
 ​<%@page import="java.util.ArrayList"%>
-<%@page import="domain.Director"%>
-<%@page import="domain.Movie"%>
+<%@page import="main.java.domain.Director"%>
+<%@page import="main.java.domain.Movie"%>
 <%@ page import="java.io.PrintWriter"%>
 <%@page session="false" language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8" %>
-<%@page import="domain.DirectorService"%>
-<%@page import="domain.MovieService"%>
+<%@page import="main.java.domain.DirectorService"%>
+<%@page import="main.java.domain.MovieService"%>
 <% 
 int dirId = 0;
 

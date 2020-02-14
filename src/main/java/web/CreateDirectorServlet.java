@@ -1,7 +1,6 @@
-package web;
-
-import domain.Director;
-import domain.DirectorService;
+package main.java.web;
+import main.java.domain.Director;
+import main.java.domain.DirectorService;
 import java.io.IOException;
 import java.sql.Date;
 import javax.servlet.RequestDispatcher;
@@ -10,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import util.Status;
+import main.java.util.Status;
 
 @WebServlet("/createdirector")
 public class CreateDirectorServlet extends HttpServlet {

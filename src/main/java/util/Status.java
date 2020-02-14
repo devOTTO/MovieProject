@@ -1,5 +1,5 @@
 //Status.java
-package util;
+package main.java.util;
 import java.util.ArrayList;
 import java.util.Iterator;
 public class Status {

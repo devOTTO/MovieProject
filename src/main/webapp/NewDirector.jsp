@@ -1,5 +1,5 @@
 ​<%@page session="false" import="java.util.Iterator"%>
-<jsp:useBean id="status" scope="request" class="util.Status"/>
+<jsp:useBean id="status" scope="request" class="main.java.util.Status"/>
 <%@page session="false" language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8" %>
 <!DOCTYPE html>

@@ -1,5 +1,5 @@
 //DBConnectionPool.java
-package util;
+package main.java.util;
 //JDBC imports
 import javax.sql.DataSource;
 import java.sql.Connection;

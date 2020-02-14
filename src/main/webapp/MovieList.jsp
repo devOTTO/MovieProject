@@ -1,9 +1,9 @@
 ​<%@page import="java.util.ArrayList"%>
 <%@ page import="java.io.PrintWriter"%>
-<%@page import="domain.Movie"%>
+<%@page import="main.java.domain.Movie"%>
 <%@page session="false" language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8" %>
-<%@page import="domain.MovieService"%>
+<%@page import="main.java.domain.MovieService"%>
 <script type="text/javascript">
  function keyword_check_mov(){
 

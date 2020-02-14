@@ -1,7 +1,7 @@
 ​<%@page session="false" import="java.util.Iterator"%>
-<jsp:useBean id="status" scope="request" class="util.Status"/>
-<%@page import="domain.DirectorService"%>
-<%@page import="domain.Director"%>
+<jsp:useBean id="status" scope="request" class="main.java.util.Status"/>
+<%@page import="main.java.domain.DirectorService"%>
+<%@page import="main.java.domain.Director"%>
 <%@page session="false" language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8" %>
 <!DOCTYPE html>

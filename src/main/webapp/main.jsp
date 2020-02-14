@@ -1,10 +1,10 @@
 ​<%@page import="java.util.ArrayList"%>
-<%@page import="domain.Movie"%>
-<%@page import="domain.Director"%>
+<%@page import="main.java.domain.Movie"%>
+<%@page import="main.java.domain.Director"%>
 <%@page session="false" language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8" %>
-<%@page import="domain.MovieService"%>
-<%@page import="domain.DirectorService"%>
+<%@page import="main.java.domain.MovieService"%>
+<%@page import="main.java.domain.DirectorService"%>
 <% 
 ArrayList<Movie> movies = new MovieService().getMovies(); 
 ArrayList<Director> directors = new DirectorService().getDirectors(); 

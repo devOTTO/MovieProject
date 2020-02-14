@@ -1,7 +1,7 @@
-package web;
+package main.java.web;
 
-import domain.Director;
-import domain.DirectorService;
+import main.java.domain.Movie;
+import main.java.domain.MovieService;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,10 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import util.Status;
+import main.java.util.Status;
 
-@WebServlet("/showdirectordata")
-public class DirectorServlet extends HttpServlet {
+@WebServlet("/showmoviedata")
+public class MovieServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -27,30 +27,30 @@ public class DirectorServlet extends HttpServlet {
         Status status = new Status();
         request.setAttribute("status", status);
 
-        int dirId = Integer.parseInt(request.getParameter("dirId"));
+        int movId = Integer.parseInt(request.getParameter("movId"));
 
-        Director director = null;
+        Movie movie = null;
 
         try {
 
-            DirectorService dirieservice = new DirectorService();
+            MovieService movieservice = new MovieService();
 
-            director = dirieservice.selectedDirector(dirId);
+            movie = movieservice.selectedMovie(movId);
 
             if (!status.isSuccessful()) {
-                view = request.getRequestDispatcher("DirectorList.jsp");
+                view = request.getRequestDispatcher("MovieList.jsp");
                 view.forward(request, response);
                 return;
             }
 
-            request.setAttribute("director", director);
+            request.setAttribute("movie", movie);
 
-            view = request.getRequestDispatcher("DirectorData.jsp");
+            view = request.getRequestDispatcher("MovieData.jsp");
             view.forward(request, response);
 
         } catch (Exception e) {
             status.addException(e);
-            view = request.getRequestDispatcher("DirectorList.jsp");
+            view = request.getRequestDispatcher("MovieList.jsp");
             view.forward(request, response);
         }
     }
