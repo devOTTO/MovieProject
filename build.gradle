@@ -24,7 +24,6 @@ dependencies {
 group = 'MovieProject'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
-project.webAppDirName = 'WebContent'
 publishing {
     publications {
         maven(MavenPublication) {
@@ -35,9 +34,4 @@ publishing {
 
 war {
 	archiveName="MovieProject.war"
-	from 'src/rootContent' // 웹 애플리케이션 루트에 지정된 경로 이하의 파일 셋 추가, into에 웹 애플리케이션 루트에 상대적인 경로로 복사될 목표 디렉토리 지정 가능.
-    webInf { from 'src/additionalWebInf' } // WEB-INF에 지정된 파일셋 추가, into에 WEB-INF에 상대적인 경로로 복사될 목표 디렉토리 지정 가능.
-    classpath fileTree('additionalLibs') // WEB-INF/lib 에 지정된 파일셋 추가
-    classpath configurations.moreLibs // WEB-INF/lib 에 지정된 구성 추가
-    webXml = file('src/someWeb.xml') // WEB-INF/web.xml 로 복사
 }
