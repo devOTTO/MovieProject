@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<h1>Was1</h1>
+<h1>Was1 Push Test</h1>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr bgcolor="#CCCCCC">
     <td width="13%">TomcatB Machine</td>
