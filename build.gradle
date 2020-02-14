@@ -5,6 +5,7 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'war'
 }
 
 repositories {
@@ -30,4 +31,8 @@ publishing {
             from(components.java)
         }
     }
+}
+
+war {
+	archiveName="MovieProject.war"
 }
